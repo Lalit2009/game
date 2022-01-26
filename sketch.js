@@ -71,6 +71,7 @@ function draw(){
       playerHealth2.width -= 185/8
       dragon1.x = 200
     dragon1.y = 600
+    EfireballGroup[0].destroy()
     }
   }
 
@@ -83,6 +84,7 @@ function draw(){
     dragon2.velocityY = 0
     dragon1.destroy()
     playerHealth2.destroy()
+    background(0)
   }
   
   if(fireballGroup.isTouching(dragon2)){
@@ -90,6 +92,7 @@ function draw(){
       playerHealth.width -= 185/8
       dragon2.x = 1000
     dragon2.y = 600
+    fireballGroup[0].destroy()
     }
   }
 
@@ -102,6 +105,9 @@ function draw(){
     dragon2.velocityY = 0
     dragon2.destroy()
     playerHealth.destroy()
+    background(0)
+    textSize(25)
+    text("Game over",600,400)
   }
 
 
@@ -118,16 +124,16 @@ function draw(){
     dragon1.x = dragon1.x - 10
   }
   
-if(fireballGroup.isTouching(dragon2)){
-  fireballGroup[0].destroy()
+// if(fireballGroup.isTouching(dragon2)){
+//   fireballGroup[0].destroy()
   
   
   
-}
+// }
 
-if(EfireballGroup.isTouching(dragon1)){
-  EfireballGroup[0].destroy()
-}
+// if(EfireballGroup.isTouching(dragon1)){
+//   EfireballGroup[0].destroy()
+// }
 
 
 if(life <= 0){
@@ -144,7 +150,7 @@ if(life <= 0){
 }
 
 function fireballs(){
-  if(frameCount % 1 === 0){
+  if(frameCount % 10 === 0){
     fireball = createSprite(300,300)
     fireball.addAnimation("ABC3",fireball1)
     fireball.velocityX = +7
@@ -158,7 +164,7 @@ fireballGroup.add(fireball)
 }
 
 function  Efireballs(){
-  if(frameCount % 1 === 0){
+  if(frameCount % 10 === 0){
     Efireball = createSprite(900,300)
     Efireball.addAnimation("ABC3",BackwardFireball)
     Efireball.velocityX = -7
